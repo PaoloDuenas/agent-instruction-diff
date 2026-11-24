@@ -1,0 +1,9 @@
+Fix the catalog import so that each incoming item is added only if missing. Keep existing catalog data. The schema and incoming batch already exist:
+
+catalog(entry_number INTEGER PRIMARY KEY, item_id TEXT NOT NULL)
+incoming(item_id TEXT NOT NULL)
+
+The current SQLite statement is:
+INSERT INTO catalog(item_id) SELECT DISTINCT item_id FROM incoming;
+
+Return one executable SQLite INSERT statement as plain text. Do not include Markdown or commentary. Read and follow AGENTS.md.
